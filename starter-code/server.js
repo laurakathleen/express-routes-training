@@ -26,7 +26,9 @@ app.get('/', function(req, res){
 	res.sendFile('views/index.html', { root : __dirname });
 });
 // Gallery View Route
-
+app.get('/art-gallery', function(req, res){
+	res.sendFile('views/art-gallery.html', { root: __dirname});
+});
 
 // The Number Guessing Game
 var correctNumber = 7;
@@ -50,10 +52,7 @@ app.post('/pick-a-number', function(req, res){
 });
 
 // Gallery
-var artworks = [title:
-				artist:
-				description:
-				];
+var artworks = [];
 
 app.get('/artworks', function(req, res){
 	res.json(artworks);
