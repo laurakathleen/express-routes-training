@@ -22,16 +22,48 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTES
 // Root Route
-
-
+app.get('/', function(req, res){
+	res.sendFile('views/index.html', { root : __dirname });
+});
 // Gallery View Route
 
 
 // The Number Guessing Game
+var correctNumber = 7;
 
+app.get('/pick-a-number', function(req, res){
+	var num = parseInt(req.query.number);
+	if (num === correctNumber){
+		res.send('Nailed it! ' + num + ' is the correct number!');
+	} else if (num < correctNumber){
+		res.send('Too low!');
+	} else if (num > correctNumber){
+		res.send('Too High!');
+	} else {
+		res.send("Looks like something went wrong.");
+	}
+});
+
+app.post('/pick-a-number', function(req, res){
+	correctNumber = parseInt(req.body.number);
+	res.send("There is a new target number");
+});
 
 // Gallery
+var artworks = [title:
+				artist:
+				description:
+				];
 
+app.get('/artworks', function(req, res){
+	var newArtwork = {
+		title: req.body.title,
+		artist: req.body.artist,
+		description: req.body.description
+	};
+	artworks.push(newArtwork);
+	response.json(artworks);
+});
 
 // SERVER START
 var port = 3000;
