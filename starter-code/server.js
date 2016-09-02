@@ -56,14 +56,19 @@ var artworks = [title:
 				];
 
 app.get('/artworks', function(req, res){
+	res.json(artworks);
+});
+
+app.post('/artworks', function(req, res){
 	var newArtwork = {
 		title: req.body.title,
 		artist: req.body.artist,
 		description: req.body.description
 	};
 	artworks.push(newArtwork);
-	response.json(artworks);
+	res.json(artworks);
 });
+
 
 // SERVER START
 var port = 3000;
